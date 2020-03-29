@@ -15,7 +15,11 @@ public class User {
     private String email;
     private String password;
     private String name;
+    private double amountOfPLN;
 
+    public String getId() {
+        return id;
+    }
     public void setId(String id) {
         this.id = id;
     }
@@ -39,4 +43,11 @@ public class User {
     }
 
 
+    public double getAmountOfPLN() {
+        return amountOfPLN;
+    }
+
+    public void setAmountOfPLN(double amountOfPLN) {
+        this.amountOfPLN = amountOfPLN;
+    }
 }
