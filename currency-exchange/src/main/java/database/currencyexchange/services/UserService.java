@@ -42,4 +42,8 @@ public class UserService implements UserDetailsService {
         repository.save(user);
     }
 
+    public void updateUser(User user){
+        repository.save(user);
+    }
+
 }

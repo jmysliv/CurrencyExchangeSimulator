@@ -96,4 +96,12 @@ public class Bet {
     public void setAmountObtainedPLN(double amountObtainedPLN) {
         this.amountObtainedPLN = amountObtainedPLN;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
