@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document(collection = "bets")
@@ -16,12 +17,12 @@ public class Bet {
     private String userId;
     private String currencySymbol;
     private double amountOfCurrency;
-    private Date purchaseDate;
-    private Date soldDate;
+    private LocalDate purchaseDate;
+    private LocalDate soldDate;
     private double amountInvestedPLN;
     private double amountObtainedPLN;
 
-    public Bet(String id, String currencyId, String userId, String currencySymbol, double amountOfCurrency, Date purchaseDate, double amountInvestedPLN){
+    public Bet(String id, String currencyId, String userId, String currencySymbol, double amountOfCurrency, LocalDate purchaseDate, double amountInvestedPLN){
         this.id = id;
         this.currencyId = currencyId;
         this.userId = userId;
@@ -65,19 +66,19 @@ public class Bet {
         this.amountOfCurrency = amountOfCurrency;
     }
 
-    public Date getPurchaseDate() {
+    public LocalDate getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public Date getSoldDate() {
+    public LocalDate getSoldDate() {
         return soldDate;
     }
 
-    public void setSoldDate(Date soldDate) {
+    public void setSoldDate(LocalDate soldDate) {
         this.soldDate = soldDate;
     }
 

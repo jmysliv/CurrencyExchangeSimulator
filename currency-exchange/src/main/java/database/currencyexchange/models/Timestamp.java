@@ -1,17 +1,18 @@
 package database.currencyexchange.models;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 public class Timestamp {
-    private Date date;
+    private LocalDate date;
     private double exchangeRate;
 
-    public Timestamp(final Date date, final double exchangeRate) {
+    public Timestamp(final LocalDate date, final double exchangeRate) {
         this.date = date;
         this.exchangeRate = exchangeRate;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
