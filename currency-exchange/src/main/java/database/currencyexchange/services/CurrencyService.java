@@ -91,8 +91,8 @@ public class CurrencyService {
                 .path("history")
                 .queryParam("start_at", startAt)
                 .queryParam("end_at", endAt)
-                .queryParam("base", "PLN")
-                .queryParam("symbols", symbol)
+                .queryParam("symbols", "PLN")
+                .queryParam("base", symbol)
                 .build().toUri();
 
         HttpRequest request = HttpRequest.newBuilder().uri(apiUrl).build();
@@ -112,7 +112,7 @@ public class CurrencyService {
             List<Timestamp> timestamps = new ArrayList<>();
             for (var rate: rates.entrySet()) {
                 LocalDate date = LocalDate.parse(rate.getKey(), DateTimeFormatter.ISO_LOCAL_DATE);
-                double exchangeRate = ((Map<String, Double>) rate.getValue()).get(symbol);
+                double exchangeRate = ((Map<String, Double>) rate.getValue()).get("PLN");
                 timestamps.add(new Timestamp(date, exchangeRate));
             }
 
