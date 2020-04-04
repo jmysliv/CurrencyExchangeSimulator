@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -49,6 +50,7 @@ public class CurrencyService {
         this.mongoTemplate = mongoTemplate;
     }
 
+    @Scheduled(cron = "0 0 6 * * *")
     @EventListener(ApplicationReadyEvent.class)
     public void fillCurrencyData() throws ExecutionException, InterruptedException {
         var futures = currencyRepository.findAll().stream()
