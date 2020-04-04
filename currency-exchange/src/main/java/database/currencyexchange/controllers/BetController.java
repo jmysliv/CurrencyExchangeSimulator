@@ -1,7 +1,7 @@
 package database.currencyexchange.controllers;
 
 import database.currencyexchange.models.Bet;
-import database.currencyexchange.models.Timestamp;
+import database.currencyexchange.models.Currency;
 import database.currencyexchange.models.User;
 import database.currencyexchange.repositories.BetRepository;
 import database.currencyexchange.repositories.CurrencyRepository;
@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -36,7 +36,14 @@ public class BetController {
     }
 
     @RequestMapping(method=RequestMethod.POST)
-    public String save(@RequestBody Bet bet) {
+    public String buy(@RequestBody Bet bet) {
+        Currency currency = currencyRepository.findById(bet.getCurrencyId()).get();
+        bet.setAmountObtainedPLN(Double.NaN);
+        bet.setSoldDate(null);
+        bet.setPurchaseDate(LocalDate.now());
+        bet.setCurrencySymbol(currency.getSymbol());
+        double rate = currency.getCurrentExchangeRate();
+        bet.setAmountOfCurrency(bet.getAmountInvestedPLN() * (1/rate));
         betRepository.save(bet);
 
         return bet.getId();
@@ -48,18 +55,12 @@ public class BetController {
     }
 
     @RequestMapping(method=RequestMethod.PUT, value="/{id}")
-    public Bet update(@PathVariable String id, @RequestBody Bet bet) {
+    public Bet sell(@PathVariable String id) {
         Optional<Bet> oldBet = betRepository.findById(id);
-        if(bet.getSoldDate() != null){
-            oldBet.get().setSoldDate(bet.getSoldDate());
-            List<Timestamp> timestamps = currencyRepository.findById(oldBet.get().getCurrencyId()).get().getTimestamps();
-            double rate = 0;
-            for(Timestamp timestamp : timestamps){
-                if(timestamp.getDate().compareTo(bet.getSoldDate()) == 0){
-                    rate = timestamp.getExchangeRate();
-                    break;
-                }
-            }
+        if(oldBet.get().getSoldDate() == null){
+            oldBet.get().setSoldDate(LocalDate.now());
+            Currency currency = currencyRepository.findById(oldBet.get().getCurrencyId()).get();
+            double rate = currency.getCurrentExchangeRate();
             oldBet.get().setAmountObtainedPLN(oldBet.get().getAmountOfCurrency() * rate);
         }
 

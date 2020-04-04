@@ -2,6 +2,8 @@ package database.currencyexchange.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Document(collection = "currencies")
@@ -18,6 +20,18 @@ public class Currency {
         this.name = name;
         this.symbol = symbol;
         this.timestamps = timestamps;
+    }
+
+    public double getCurrentExchangeRate(){
+        LocalDate latestRecordedTimestamp = LocalDate.of(2018, 12, 31);
+        double rate = 1;
+        for(Timestamp timestamp : timestamps){
+            if(latestRecordedTimestamp.compareTo(timestamp.getDate()) < 0){
+                latestRecordedTimestamp = timestamp.getDate();
+                rate = timestamp.getExchangeRate();
+            }
+        }
+        return rate;
     }
 
     public List<Timestamp> getTimestamps() {

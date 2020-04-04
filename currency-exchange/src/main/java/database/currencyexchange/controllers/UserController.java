@@ -1,7 +1,6 @@
 package database.currencyexchange.controllers;
 
 import database.currencyexchange.models.User;
-import database.currencyexchange.repositories.UserRepository;
 import database.currencyexchange.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,9 +22,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getUserData(){
