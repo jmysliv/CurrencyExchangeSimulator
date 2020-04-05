@@ -17,13 +17,19 @@ import static org.springframework.http.ResponseEntity.ok;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+
     @RequestMapping(method = RequestMethod.GET)
+    public Iterable<User> getAllUsers(){
+        return userService.getUsers();
+    }
+
+    @GetMapping("/me")
     public ResponseEntity getUserData(){
         try{
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -39,14 +45,13 @@ public class UserController {
         }
     }
 
-    @RequestMapping(method=RequestMethod.PUT)
+    @PutMapping("/me")
     public  User updateAmount(@RequestBody User user) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User oldUser = userService.findUserByEmail(userDetails.getUsername());
         if(user.getAmountOfPLN() != Double.NaN){
             oldUser.setAmountOfPLN(user.getAmountOfPLN());
         }
-
         userService.updateUser(oldUser);
         return oldUser;
     }

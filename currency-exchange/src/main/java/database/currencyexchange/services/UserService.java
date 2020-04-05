@@ -7,7 +7,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +43,12 @@ public class UserService implements UserDetailsService {
 
     public void updateUser(User user){
         repository.save(user);
+    }
+
+    public Iterable<User> getUsers(){
+        Iterable<User> users = repository.findAll();
+        users.forEach(user -> user.setPassword(""));
+        return users;
     }
 
 }
