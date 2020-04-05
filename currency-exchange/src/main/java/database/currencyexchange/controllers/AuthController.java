@@ -74,13 +74,13 @@ public class AuthController {
         if (userExists != null) {
             Map<Object, Object> response = new HashMap<>();
             response.put("message","User with email: " + user.getEmail() + " already exists");
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
         user.setAmountOfPLN(1000);
         userService.saveUser(user);
         Map<Object, Object> model = new HashMap<>();
-        model.put("message", "User registered successfully");
-        return ok(model);
+        model.put("message", "User created   successfully");
+        return new ResponseEntity<>(model, HttpStatus.CREATED);
     }
 
 

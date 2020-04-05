@@ -57,7 +57,7 @@ public class BetController {
         if( bet.getAmountInvestedPLN() > user.getAmountOfPLN()){
             Map<Object, Object> response = new HashMap<>();
             response.put("message", "You don't have enough money to invest");
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(response, HttpStatus.CONFLICT);
         }
 
         user.setAmountOfPLN(user.getAmountOfPLN() - bet.getAmountInvestedPLN());
@@ -111,7 +111,7 @@ public class BetController {
         }
         Map<Object, Object> response = new HashMap<>();
         response.put("message", "Bet has already been sold");
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
 }
