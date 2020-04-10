@@ -67,7 +67,7 @@ JSON params
 Possible responses:
 
 + *status code 400* : Invalid credentials
-+ *status code 201* : 
++ *status code 200* : 
 ```JSON
 {
     "email": "<user email>",
@@ -76,6 +76,7 @@ Possible responses:
 ```
 ### List of all users
 ```/users GET```
+
 Possible responses:
 
 + *status code 401* : Unauthorized
