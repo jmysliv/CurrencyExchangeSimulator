@@ -16,17 +16,17 @@ Technologies we decided to use was Java Spring Boot framework to create backend 
 
 ## REST API 
 ### REST paths
-+ [/auth/login POST](###creating-new-user)
-+ [/auth/register POST](###login)
-+ [/users GET](###list-of-all-users)
-+ [/users/me GET](###user-data)
-+ [/users/me PUT](###changing-user-amount-of-money)
-+ [/currencies GET](###list-of-all-currencies)
-+ [/currencies/id GET](###one-currency)
-+ [/bets GET](###list-of-user-bets)
-+ [/bets POST](###buy-new-currency)
-+ [/bets/id GET](###one-bet)
-+ [/bets/id PUT](###sell-currency)
++ [/auth/login POST](#creating-new-user)
++ [/auth/register POST](#login)
++ [/users GET](#list-of-all-users)
++ [/users/me GET](#user-data)
++ [/users/me PUT](#changing-user-amount-of-money)
++ [/currencies GET](#list-of-all-currencies)
++ [/currencies/id GET](#one-currency)
++ [/bets GET](#list-of-user-bets)
++ [/bets POST](#buy-new-currency)
++ [/bets/id GET](#one-bet)
++ [/bets/id PUT](#sell-currency)
 ### Paths that doesn't require authentication:
 + /auth/login POST
 + /auth/register POST
