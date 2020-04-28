@@ -12,12 +12,12 @@ Our task was to implement fragment of the database application. We could choose 
 Our idea was to create application for exchange market 
 enthusiasts. Application that will allow users to check informations about currency exchange rate, and to test buying some currencies in order to make a profit like on real exchange market. It would be a perfect tool for those who want to test their analytics skills and don't want to risk on the real exchange market with real money.
 
-Technologies we decided to use was Java Spring Boot framework to create backend REST API, and MongoDB as a database.
+Technologies we decided to use was Java Spring Boot framework to create backend REST API, and MongoDB as a database. An example of frontend implementation for android devices can be found [here](https://github.com/jmysliv/exchange-simulator).
 
 ## REST API 
 ### REST paths
-+ [/auth/login POST](#creating-new-user)
-+ [/auth/register POST](#login)
++ [/auth/login POST](#login)
++ [/auth/register POST](#creating-new-user)
 + [/users GET](#list-of-all-users)
 + [/users/me GET](#user-data)
 + [/users/me PUT](#changing-user-amount-of-money)
