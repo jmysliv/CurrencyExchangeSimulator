@@ -68,8 +68,9 @@ Kolekcja `Bets` zawiera dokumenty o następującej strukturze:
     "currencySymbol" : "USD",
     "amountOfCurrency" : 247.701253045412,
     "purchaseDate" : ISODate("2020-05-27T22:00:00.000Z"),
+    "soldDate" : ISODate("2020-05-28T22:00:00.000Z"),
     "amountInvestedPLN" : 1000.0,
-    "amountObtainedPLN" : NaN,
+    "amountObtainedPLN" : 994.807447103792,
     "_class" : "database.currencyexchange.models.Bet"
 }
 ```
@@ -80,6 +81,7 @@ Kolekcja `Bets` zawiera dokumenty o następującej strukturze:
 - **currencySymbol** - Kod ISO 4217 waluty
 - **amountOfCurrency** - Ilość zakupionej waluty
 - **purchaseDate** - Data kupna
+- **soldDate** - Data sprzedaży
 - **amountInvestedPLN** - Ilośc wydanych złotówek w momencie kupna
 - **amountObtainedPLN** - Ilość uzyskanych złotówek w momencie sprzedaży
 
