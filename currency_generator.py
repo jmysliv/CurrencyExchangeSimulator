@@ -11,7 +11,7 @@ def get_currencies_names_and_symbols():
     content = response.text
     soup = BeautifulSoup(content, "html.parser")
     table = soup.find('table', class_="ecb-forexTable fullWidth")
-    for row in table.findAll('tr'):
+    for row in table.tbody.findAll('tr'):
         try:
             symbol = row.td.a.text
             name = row.td.findNext('td').a.text

@@ -2,6 +2,8 @@ Currency Exchange Simulator API
 ===
 *Project created as a part of the subject 'Databases' in AGH University of Science and Technology.*
 
+[DOKUMENTACJA](dokumentacja.md)
+
 ## Team
 + [Konrad Bochnia](https://github.com/szebniok)
 + [Jakub Myśliwiec](https://github.com/jmysliv)
